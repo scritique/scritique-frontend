@@ -1,11 +1,8 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import {
-  PhoneIcon,
-  EnvelopeIcon,
   MapPinIcon,
   ClockIcon,
-  ChatBubbleLeftRightIcon,
   AcademicCapIcon
 } from "@heroicons/react/24/outline"
 import { ClickablePhone } from "../utils/contactUtils"

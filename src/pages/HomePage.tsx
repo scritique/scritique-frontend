@@ -4,15 +4,9 @@ import { useNavigate } from "react-router-dom"
 import {
   AcademicCapIcon,
   ClockIcon,
-  CheckCircleIcon,
   StarIcon,
   DocumentTextIcon,
-  GlobeAltIcon,
-  ShieldCheckIcon,
-  ChatBubbleLeftRightIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CheckIcon
+  CheckCircleIcon
 } from "@heroicons/react/24/outline"
 import TestimonialSlider from "../components/TestimonialSlider"
 import ContactPopup from "../components/ContactPopup"
@@ -116,13 +110,7 @@ const HomePage: React.FC = () => {
   const totalPages = Math.ceil(totalCards / cardsPerView)
   const maxIndex = totalPages - 1
 
-  const nextCards = () => {
-    setCurrentCardIndex((prev) => Math.min(prev + 1, maxIndex))
-  }
 
-  const prevCards = () => {
-    setCurrentCardIndex((prev) => Math.max(prev - 1, 0))
-  }
 
   // Automatic sliding effect with seamless loop
   useEffect(() => {
@@ -141,6 +129,7 @@ const HomePage: React.FC = () => {
     return () => clearInterval(interval)
   }, [maxIndex])
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const features = [
     {
       icon: AcademicCapIcon,

@@ -50,7 +50,7 @@ const ExpertForm: React.FC<ExpertFormProps> = ({ onClose }) => {
     }
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required"
-    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+    } else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
       newErrors.phone = "Please enter a valid phone number"
     }
     if (!formData.message.trim()) {
@@ -308,12 +308,12 @@ const ExpertForm: React.FC<ExpertFormProps> = ({ onClose }) => {
               <p>
                 For further details on how your personal data will be processed
                 and how your consent can be managed, refer to the{" "}
-                <a
-                  href="#"
-                  className="text-purple-400 underline hover:text-purple-300"
+                <button
+                  type="button"
+                  className="text-purple-400 underline hover:text-purple-300 bg-transparent border-none p-0 cursor-pointer"
                 >
                   Scritique Privacy Notice
-                </a>
+                </button>
                 .
               </p>
               <p className="mt-2">*Mandatory fields</p>

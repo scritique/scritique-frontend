@@ -5,7 +5,6 @@ import {
   DocumentTextIcon,
   UsersIcon,
   GlobeAltIcon,
-  CheckCircleIcon,
   StarIcon
 } from "@heroicons/react/24/outline"
 

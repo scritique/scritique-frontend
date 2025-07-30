@@ -31,9 +31,9 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /home/ubuntu/scritique-frontend
-          git pull origin main
-          npm ci
+          cd /home/ubuntu/scritique-frontend || mkdir -p /home/ubuntu/scritique-frontend && cd /home/ubuntu/scritique-frontend
+          git pull origin main || git clone https://github.com/scritique/scritique-frontend.git .
+          npm ci || npm install
           npm run build
           sudo cp -r build/* /var/www/html/
           sudo systemctl reload nginx
