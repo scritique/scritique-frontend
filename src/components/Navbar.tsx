@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
                     Scritique
                   </h1>
                   <span className="text-xs text-pink-600 font-medium italic text-center">
-                    Critically Inclined
+                    Critically Inklined
                   </span>
                 </div>
               </div>
