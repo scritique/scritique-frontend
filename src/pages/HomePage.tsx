@@ -187,13 +187,13 @@ const HomePage: React.FC = () => {
             className="mb-6"
           >
             <h1
-              className="text-xl md:text-3xl lg:text-5xl font-bold text-white leading-relaxed"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed"
               style={{ fontFamily: "sans serif" }}
             >
               Premium Academic Writing Consultancy
             </h1>
             <h1
-              className="text-xl md:text-3xl lg:text-5xl font-bold text-white leading-relaxed mt-4"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed mt-4"
               style={{ fontFamily: "sans serif" }}
             >
               For Ambitious Researchers and Scholars
