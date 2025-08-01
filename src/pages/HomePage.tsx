@@ -175,16 +175,10 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6"
           >
-            <h1
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed"
-              style={{ fontFamily: "sans serif" }}
-            >
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed font-serif">
               Premium Academic Writing Consultancy
             </h1>
-            <h1
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed mt-4"
-              style={{ fontFamily: "sans serif" }}
-            >
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed mt-4 font-serif">
               For Ambitious Researchers and Scholars
             </h1>
           </motion.div>
@@ -227,10 +221,7 @@ const HomePage: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="pl-8"
             >
-              <h2
-                className="text-xl md:text-2xl font-bold text-gray-900 mb-6 uppercase"
-                style={{ fontFamily: "sans serif" }}
-              >
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 uppercase font-serif">
                 BACKED BY EXPERTISE. CHOSEN FOR TRUST.
               </h2>
               <div className="space-y-4 text-gray-700">
@@ -312,10 +303,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              style={{ fontFamily: "sans serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
               What We Do?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -414,10 +402,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              style={{ fontFamily: "sans serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
               Why Choose Us?
             </h2>
           </motion.div>
@@ -608,10 +593,7 @@ const HomePage: React.FC = () => {
       <section className="section-padding bg-gradient-to-r from-green-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              style={{ fontFamily: "sans serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
               Special Discounts
             </h2>
           </div>
@@ -664,8 +646,7 @@ const HomePage: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-            style={{ fontFamily: "sans serif" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif"
           >
             Have additional academic writing questions?
           </motion.h2>
