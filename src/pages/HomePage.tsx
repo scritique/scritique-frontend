@@ -105,10 +105,28 @@ const HomePage: React.FC = () => {
     }
   ]
 
-  const cardsPerView = 3
+  // Responsive cards per view
+  const [cardsPerView, setCardsPerView] = useState(3)
   const totalCards = whatWeDoCards.length
   const totalPages = Math.ceil(totalCards / cardsPerView)
   const maxIndex = totalPages - 1
+
+  // Update cards per view based on screen size
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth < 640) { // sm breakpoint
+        setCardsPerView(1)
+      } else if (window.innerWidth < 1024) { // lg breakpoint
+        setCardsPerView(2)
+      } else {
+        setCardsPerView(3)
+      }
+    }
+
+    updateCardsPerView()
+    window.addEventListener('resize', updateCardsPerView)
+    return () => window.removeEventListener('resize', updateCardsPerView)
+  }, [])
 
 
 
@@ -124,10 +142,15 @@ const HomePage: React.FC = () => {
         }
         return nextIndex
       })
-    }, 5000) // Slide every 3 seconds
+    }, 5000) // Slide every 5 seconds
 
     return () => clearInterval(interval)
   }, [maxIndex])
+
+  // Reset current card index when cardsPerView changes
+  useEffect(() => {
+    setCurrentCardIndex(0)
+  }, [cardsPerView])
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const features = [
@@ -323,17 +346,17 @@ const HomePage: React.FC = () => {
               >
                 {/* Duplicate slides to create seamless loop */}
                 {Array.from(
-                  { length: Math.ceil(whatWeDoCards.length / 3) * 2 },
+                  { length: Math.ceil(whatWeDoCards.length / cardsPerView) * 2 },
                   (_, pageIndex) => {
                     const actualPageIndex =
-                      pageIndex % Math.ceil(whatWeDoCards.length / 3)
+                      pageIndex % Math.ceil(whatWeDoCards.length / cardsPerView)
                     return (
                       <div
                         key={pageIndex}
                         className="flex gap-4 w-full flex-shrink-0"
                       >
                         {whatWeDoCards
-                          .slice(actualPageIndex * 3, (actualPageIndex + 1) * 3)
+                          .slice(actualPageIndex * cardsPerView, (actualPageIndex + 1) * cardsPerView)
                           .map((card, cardIndex) => (
                             <motion.div
                               key={pageIndex * 3 + cardIndex}
@@ -343,10 +366,14 @@ const HomePage: React.FC = () => {
                                 duration: 0.5,
                                 delay: cardIndex * 0.1
                               }}
-                              className="w-1/3"
+                              className={`px-2 ${
+                                cardsPerView === 1 ? 'w-full' :
+                                cardsPerView === 2 ? 'w-1/2' :
+                                'w-1/3'
+                              }`}
                             >
                               <div className="card h-full bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="p-4 text-center">
+                                <div className="p-4 sm:p-6 text-center">
                                   <div className="w-12 h-12 flex items-center justify-center mx-auto mb-3">
                                     {typeof card.icon === 'string' ? (
                                       <img 
@@ -358,10 +385,10 @@ const HomePage: React.FC = () => {
                                       card.icon || <DocumentTextIcon className="w-6 h-6 text-purple-600" />
                                     )}
                                   </div>
-                                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 break-words">
                                     {card.title}
                                   </h3>
-                                  <p className="text-gray-600 text-sm leading-relaxed">
+                                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed break-words">
                                     {card.description}
                                   </p>
                                 </div>

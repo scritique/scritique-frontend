@@ -45,6 +45,33 @@ const TestimonialSlider: React.FC = () => {
         "Great experience with their academic writing services. The student discount made it affordable, and the quality exceeded my expectations.",
       rating: 5,
       service: "Academic Writing"
+    },
+    {
+      name: "Subodh Kumar",
+      role: "Graduate Student",
+      university: "Civil Engineering",
+      content:
+        "As a non-native English speaker, I struggled with expressing complex ideas. This service helped me polish my thesis to perfection. It was well-structured and delivered before deadline. My professor even commented on the clarity of my arguments.",
+      rating: 5,
+      service: "Thesis Writing"
+    },
+    {
+      name: "Manish Kumar",
+      role: "Research Scholar",
+      university: "Biomedical Research",
+      content:
+        "They helped me with statistical analysis for my research article. SPSS output was clearly explained, and the results were integrated very well into my results portion.",
+      rating: 5,
+      service: "Statistical Analysis"
+    },
+    {
+      name: "Dr. Prashant Kishore",
+      role: "Medical Professional",
+      university: "Internal Medicine",
+      content:
+        "I've used their academic writing services multiple times, but this was my first abstract order for a medical conference. They translated clinical results into a concise, high-impact abstract that got accepted at an international diabetes-focused symposium.",
+      rating: 5,
+      service: "Abstract Writing"
     }
   ]
 
