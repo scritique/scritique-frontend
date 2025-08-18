@@ -1,6 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
+# Scritique - Academic Writing Services
+
+# Allow all crawlers
 User-agent: *
-Disallow:
+Allow: /
 
 # Sitemap location
 Sitemap: https://scritique.com/sitemap.xml
