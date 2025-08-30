@@ -19,14 +19,20 @@ const ContactPage: React.FC = () => {
     letters: ""
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+    
     try {
-      const emailSent = await sendContactFormEmail(formData)
+      const result = await sendContactFormEmail(formData)
       
-      if (emailSent) {
-        alert("Thank you for your message! We will get back to you soon.")
+      if (result.success) {
+        setSubmitMessage({ type: 'success', text: "Thank you for your message! We will get back to you soon." })
         setFormData({
           name: "",
           email: "",
@@ -37,11 +43,13 @@ const ContactPage: React.FC = () => {
           letters: ""
         })
       } else {
-        alert("There was an error sending your message. Please try again or contact us directly.")
+        setSubmitMessage({ type: 'error', text: result.message || "There was an error sending your message. Please try again or contact us directly." })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert("There was an error sending your message. Please try again or contact us directly.")
+      setSubmitMessage({ type: 'error', text: "There was an error sending your message. Please try again or contact us directly." })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -388,10 +396,26 @@ const ContactPage: React.FC = () => {
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  className="w-full bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded transition-colors duration-200 mt-6"
+                  disabled={isSubmitting}
+                  className={`w-full font-bold py-3 px-6 rounded transition-colors duration-200 mt-6 ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-yellow-300 hover:bg-yellow-400 text-black'
+                  }`}
                 >
-                  SEND
+                  {isSubmitting ? 'SENDING...' : 'SEND'}
                 </button>
+
+                {/* Submit message */}
+                {submitMessage && (
+                  <div className={`mt-4 p-3 rounded-lg text-sm ${
+                    submitMessage.type === 'success' 
+                      ? 'bg-green-100 text-green-800 border border-green-200' 
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                  }`}>
+                    {submitMessage.text}
+                  </div>
+                )}
               </div>
             </div>
 

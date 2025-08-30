@@ -16,16 +16,23 @@ const JobRolePage: React.FC = () => {
     resume: null as File | null
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+    
     try {
-      const emailSent = await sendJobApplicationEmail(formData, jobRole?.title || 'Unknown Position')
+      const result = await sendJobApplicationEmail(formData, jobRole?.title || 'Unknown Position')
       
-      if (emailSent) {
-        alert(
-          "Thank you for your application! We will review it and get back to you within 3-5 business days."
-        )
+      if (result.success) {
+        setSubmitMessage({ 
+          type: 'success', 
+          text: "Thank you for your application! We will review it and get back to you within 3-5 business days." 
+        })
         setFormData({
           firstName: "",
           lastName: "",
@@ -36,11 +43,19 @@ const JobRolePage: React.FC = () => {
           resume: null
         })
       } else {
-        alert("There was an error submitting your application. Please try again or contact us directly.")
+        setSubmitMessage({ 
+          type: 'error', 
+          text: result.message || "There was an error submitting your application. Please try again or contact us directly." 
+        })
       }
     } catch (error) {
       console.error('Error submitting application:', error)
-      alert("There was an error submitting your application. Please try again or contact us directly.")
+      setSubmitMessage({ 
+        type: 'error', 
+        text: "There was an error submitting your application. Please try again or contact us directly." 
+      })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -718,10 +733,26 @@ const JobRolePage: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                    disabled={isSubmitting}
+                    className={`w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-200 ${
+                      isSubmitting 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white'
+                    }`}
                   >
-                    Submit Application
+                    {isSubmitting ? 'Submitting...' : 'Submit Application'}
                   </button>
+
+                  {/* Submit message */}
+                  {submitMessage && (
+                    <div className={`mt-4 p-3 rounded-lg text-sm ${
+                      submitMessage.type === 'success' 
+                        ? 'bg-green-100 text-green-800 border border-green-200' 
+                        : 'bg-red-100 text-red-800 border border-red-200'
+                    }`}>
+                      {submitMessage.text}
+                    </div>
+                  )}
                 </form>
               </div>
             </motion.div>

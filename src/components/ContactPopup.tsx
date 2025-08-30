@@ -22,21 +22,31 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
     message: ""
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+    
     try {
-      const emailSent = await sendContactPopupEmail(formData)
+      const result = await sendContactPopupEmail(formData)
       
-      if (emailSent) {
-        alert("Thank you! We will contact you soon.")
-        onClose()
+      if (result.success) {
+        setSubmitMessage({ type: 'success', text: "Thank you! We will contact you soon." })
+        setTimeout(() => {
+          onClose()
+        }, 2000)
       } else {
-        alert("There was an error sending your message. Please try again or contact us directly.")
+        setSubmitMessage({ type: 'error', text: result.message || "There was an error sending your message. Please try again or contact us directly." })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert("There was an error sending your message. Please try again or contact us directly.")
+      setSubmitMessage({ type: 'error', text: "There was an error sending your message. Please try again or contact us directly." })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -226,18 +236,35 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                  disabled={isSubmitting}
+                  className={`flex-1 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white'
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                  disabled={isSubmitting}
+                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50"
                 >
                   Cancel
                 </button>
               </div>
+
+              {/* Submit message */}
+              {submitMessage && (
+                <div className={`mt-4 p-3 rounded-lg text-sm ${
+                  submitMessage.type === 'success' 
+                    ? 'bg-green-100 text-green-800 border border-green-200' 
+                    : 'bg-red-100 text-red-800 border border-red-200'
+                }`}>
+                  {submitMessage.text}
+                </div>
+              )}
             </form>
           </div>
         </motion.div>

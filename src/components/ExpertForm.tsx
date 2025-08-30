@@ -64,6 +64,8 @@ const ExpertForm: React.FC<ExpertFormProps> = ({ onClose }) => {
     return Object.keys(newErrors).length === 0
   }
 
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -72,19 +74,22 @@ const ExpertForm: React.FC<ExpertFormProps> = ({ onClose }) => {
     }
 
     setIsSubmitting(true)
+    setSubmitMessage(null)
 
     try {
-      const emailSent = await sendExpertFormEmail(formData)
+      const result = await sendExpertFormEmail(formData)
       
-      if (emailSent) {
-        alert("Thank you! We'll get back to you within 24 hours.")
-        onClose()
+      if (result.success) {
+        setSubmitMessage({ type: 'success', text: "Thank you! We'll get back to you within 24 hours." })
+        setTimeout(() => {
+          onClose()
+        }, 2000)
       } else {
-        alert("There was an error sending your message. Please try again or contact us directly.")
+        setSubmitMessage({ type: 'error', text: result.message || "There was an error sending your message. Please try again or contact us directly." })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert("There was an error sending your message. Please try again or contact us directly.")
+      setSubmitMessage({ type: 'error', text: "There was an error sending your message. Please try again or contact us directly." })
     } finally {
       setIsSubmitting(false)
     }
@@ -327,6 +332,17 @@ const ExpertForm: React.FC<ExpertFormProps> = ({ onClose }) => {
             >
               {isSubmitting ? "Sending..." : "Send"}
             </button>
+
+            {/* Submit message */}
+            {submitMessage && (
+              <div className={`mt-4 p-3 rounded-lg text-sm ${
+                submitMessage.type === 'success' 
+                  ? 'bg-green-100 text-green-800 border border-green-200' 
+                  : 'bg-red-100 text-red-800 border border-red-200'
+              }`}>
+                {submitMessage.text}
+              </div>
+            )}
           </form>
         </motion.div>
       </motion.div>
