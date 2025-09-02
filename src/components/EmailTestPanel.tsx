@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { 
   testSMTPConnection, 
-  getSMTPStatus 
+  getBackendStatus 
 } from '../utils/smtpService'
 import { 
-  sendContactFormEmail, 
-  getRateLimitStatus 
+  sendContactFormEmail
 } from '../utils/emailService'
 
 const EmailTestPanel: React.FC = () => {
@@ -16,32 +15,35 @@ const EmailTestPanel: React.FC = () => {
     setTestResults(prev => [...prev, `${new Date().toLocaleTimeString()}: ${message}`])
   }
 
-  const testSMTP = async () => {
+  const testBackendConnection = async () => {
     setIsLoading(true)
-    addResult('Testing SMTP connection...')
+    addResult('Testing backend connection...')
     
     try {
       const result = await testSMTPConnection()
-      addResult(result.success ? '✅ SMTP connection successful' : `❌ SMTP connection failed: ${result.message}`)
+      addResult(result.success ? '✅ Backend connection successful' : `❌ Backend connection failed: ${result.message}`)
     } catch (error) {
-      addResult(`❌ SMTP test error: ${error}`)
+      addResult(`❌ Backend test error: ${error}`)
     } finally {
       setIsLoading(false)
     }
   }
 
-  const checkSMTPStatus = () => {
-    const status = getSMTPStatus()
-    addResult(`📊 SMTP Status:`)
-    addResult(`   Host: ${status.host}`)
-    addResult(`   Port: ${status.port}`)
-    addResult(`   Secure: ${status.secure}`)
-    addResult(`   User: ${status.user}`)
-    addResult(`   Configured: ${status.configured ? '✅ Yes' : '❌ No'}`)
-    
-    if (!status.configured && status.missingVars.length > 0) {
-      addResult(`   Missing variables: ${status.missingVars.join(', ')}`)
-      addResult(`   Please check your .env file`)
+  const checkBackendStatus = async () => {
+    try {
+      const status = await getBackendStatus()
+      addResult(`📊 Backend Status:`)
+      addResult(`   Status: ${status.status}`)
+      addResult(`   Message: ${status.message}`)
+      addResult(`   Timestamp: ${status.timestamp}`)
+      addResult(`   Configured: ${status.configured ? '✅ Yes' : '❌ No'}`)
+      
+      if (!status.configured && status.missingVars.length > 0) {
+        addResult(`   Missing variables: ${status.missingVars.join(', ')}`)
+        addResult(`   Please check your backend configuration`)
+      }
+    } catch (error) {
+      addResult(`❌ Failed to get backend status: ${error}`)
     }
   }
 
@@ -67,14 +69,6 @@ const EmailTestPanel: React.FC = () => {
     }
   }
 
-  const checkRateLimit = () => {
-    const status = getRateLimitStatus('test@example.com', 'contact')
-    addResult(`📊 Rate Limit Status for test@example.com:`)
-    addResult(`   Hourly remaining: ${status.hourlyRemaining}`)
-    addResult(`   Daily remaining: ${status.dailyRemaining}`)
-    addResult(`   Cooldown remaining: ${status.cooldownRemaining}ms`)
-  }
-
   const clearResults = () => {
     setTestResults([])
   }
@@ -93,18 +87,19 @@ const EmailTestPanel: React.FC = () => {
       
       <div className="space-y-2 mb-4">
         <button
-          onClick={testSMTP}
+          onClick={testBackendConnection}
           disabled={isLoading}
           className="w-full bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm disabled:opacity-50"
         >
-          Test SMTP Connection
+          Test Backend Connection
         </button>
         
         <button
-          onClick={checkSMTPStatus}
-          className="w-full bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded text-sm"
+          onClick={checkBackendStatus}
+          disabled={isLoading}
+          className="w-full bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded text-sm disabled:opacity-50"
         >
-          Check SMTP Status
+          Check Backend Status
         </button>
         
         <button
@@ -113,13 +108,6 @@ const EmailTestPanel: React.FC = () => {
           className="w-full bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded text-sm disabled:opacity-50"
         >
           Test Email Sending
-        </button>
-        
-        <button
-          onClick={checkRateLimit}
-          className="w-full bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded text-sm"
-        >
-          Check Rate Limits
         </button>
         
         <button
