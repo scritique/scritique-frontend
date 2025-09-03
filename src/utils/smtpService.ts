@@ -19,7 +19,7 @@ interface EmailData {
 
 export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/sendEmail`, {
+    const response = await fetch(`${API_BASE_URL}/sendEmail`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
 // Test SMTP connection
 export const testSMTPConnection = async (): Promise<{ success: boolean; message: string }> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/health`);
+    const response = await fetch(`${API_BASE_URL}/health`);
     
     if (!response.ok) {
       const errorData = await response.json();
@@ -90,7 +90,7 @@ export const getBackendStatus = async (): Promise<{
   missingVars: string[]
 }> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/health`);
+    const response = await fetch(`${API_BASE_URL}/health`);
     
     if (!response.ok) {
       return {
