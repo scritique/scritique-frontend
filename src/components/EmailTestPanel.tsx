@@ -7,7 +7,11 @@ import {
   sendContactFormEmail
 } from '../utils/emailService'
 
-const EmailTestPanel: React.FC = () => {
+interface EmailTestPanelProps {
+  onClose?: () => void
+}
+
+const EmailTestPanel: React.FC<EmailTestPanelProps> = ({ onClose }) => {
   const [testResults, setTestResults] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -78,7 +82,7 @@ const EmailTestPanel: React.FC = () => {
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold text-gray-900">Email Test Panel</h3>
         <button
-          onClick={() => window.location.reload()}
+          onClick={onClose ?? (() => window.location.reload())}
           className="text-gray-500 hover:text-gray-700"
         >
           ✕

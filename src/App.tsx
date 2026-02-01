@@ -11,11 +11,13 @@ import CareersPage from "./pages/CareersPage"
 import JobRolePage from "./pages/JobRolePage"
 import AboutUsPage from "./pages/AboutUsPage"
 import FAQPage from "./pages/FAQPage"
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
 import ServicesPage from "./pages/ServicesPage"
 import EmailTestPanel from "./components/EmailTestPanel"
 
 function App() {
   const [showScrollToTop, setShowScrollToTop] = useState(false)
+  const [showEmailTestPanel, setShowEmailTestPanel] = useState(true)
 
   // Scroll to top functionality
   useEffect(() => {
@@ -48,6 +50,7 @@ function App() {
             <Route path="/careers/:roleId" element={<JobRolePage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           </Routes>
         </main>
         <Footer />
@@ -83,7 +86,9 @@ function App() {
         </motion.a>
 
         {/* Email Test Panel - Remove this in production */}
-        {process.env.NODE_ENV === 'development' && <EmailTestPanel />}
+        {process.env.NODE_ENV === 'development' && showEmailTestPanel && (
+          <EmailTestPanel onClose={() => setShowEmailTestPanel(false)} />
+        )}
       </div>
     </Router>
   )
