@@ -55,4 +55,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Privacy Policy Page -->
+  <url>
+    <loc>https://scritique.com/privacy-policy</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms and Conditions Page -->
+  <url>
+    <loc>https://scritique.com/terms-and-conditions</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset> 
