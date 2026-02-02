@@ -8,12 +8,12 @@ const PrivacyPolicyPage: React.FC = () => {
     {
       id: "website",
       label: "Website Privacy Policy",
-      imageSrc: "" // Add image path in public folder when ready
+      imageSrc: "website-privacy-policy.png" // Add image path in public folder when ready
     },
     {
       id: "job-applicant",
       label: "Job Applicant Privacy Policy",
-      imageSrc: "" // Add image path in public folder when ready
+      imageSrc: "job-applicants-privacy-policy.png" // Add image path in public folder when ready
     }
   ]
 

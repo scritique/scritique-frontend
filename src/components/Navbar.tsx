@@ -10,7 +10,6 @@ const Navbar: React.FC = () => {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "FAQ", href: "/faq" },
-    { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" }
   ]
@@ -22,9 +21,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <div className="flex items-center space-x-2">
-                <img 
-                  src="/scritique_logo.png" 
-                  alt="Scritique Logo" 
+                <img
+                  src="/scritique_logo.png"
+                  alt="Scritique Logo"
                   className="h-14 w-auto object-contain"
                 />
                 <div className="flex flex-col items-center">

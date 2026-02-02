@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -25,8 +26,8 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <EnvelopeIcon className="h-5 w-5 text-blue-400 mr-3" />
-                <ClickableEmail 
-                  email="contact@scritique.com" 
+                <ClickableEmail
+                  email="contact@scritique.com"
                   className="text-gray-300 hover:text-blue-400"
                 >
                   contact@scritique.com
@@ -35,14 +36,14 @@ const Footer: React.FC = () => {
               <div className="flex items-center">
                 <PhoneIcon className="h-5 w-5 text-purple-400 mr-3" />
                 <div className="text-gray-300">
-                  <ClickablePhone 
-                    phoneNumber="+91-9540800660" 
+                  <ClickablePhone
+                    phoneNumber="+91-9540800660"
                     className="hover:text-purple-400 block"
                   >
                     +91-9540800660
                   </ClickablePhone>
-                  <ClickablePhone 
-                    phoneNumber="+91-9773906079" 
+                  <ClickablePhone
+                    phoneNumber="+91-9773906079"
                     className="hover:text-purple-400 block"
                   >
                     +91-9773906079
@@ -73,9 +74,9 @@ const Footer: React.FC = () => {
               </div>
               <div className="grid grid-cols-4 gap-4">
                 {/* Facebook */}
-                <a 
-                  href="https://www.facebook.com/share/16ssqwGG9v/" 
-                  target="_blank" 
+                <a
+                  href="https://www.facebook.com/share/16ssqwGG9v/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-center hover:scale-105 transition-transform duration-200"
                 >
@@ -94,9 +95,9 @@ const Footer: React.FC = () => {
                 </a>
 
                 {/* X (Twitter) */}
-                <a 
-                  href="https://x.com/scritiquewrites?t=MzrRcEtJyQi7ivZAtHsSPA&s=09" 
-                  target="_blank" 
+                <a
+                  href="https://x.com/scritiquewrites?t=MzrRcEtJyQi7ivZAtHsSPA&s=09"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-center hover:scale-105 transition-transform duration-200"
                 >
@@ -115,9 +116,9 @@ const Footer: React.FC = () => {
                 </a>
 
                 {/* Instagram */}
-                <a 
-                  href="https://www.instagram.com/scritique.writes/profilecard/?igsh=Mzd0MWtnajZmajFq" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/scritique.writes/profilecard/?igsh=Mzd0MWtnajZmajFq"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-center hover:scale-105 transition-transform duration-200"
                 >
@@ -157,9 +158,17 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="text-center">
-            <div className="text-gray-400 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © {currentYear} Scritique. All rights reserved.
+            </div>
+            <div className="flex space-x-6 text-sm text-gray-400">
+              <Link to="/terms-and-conditions" className="hover:text-purple-400 transition-colors">
+                Terms & Conditions
+              </Link>
+              <Link to="/privacy-policy" className="hover:text-purple-400 transition-colors">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

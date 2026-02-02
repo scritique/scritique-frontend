@@ -12,8 +12,10 @@ import JobRolePage from "./pages/JobRolePage"
 import AboutUsPage from "./pages/AboutUsPage"
 import FAQPage from "./pages/FAQPage"
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
+import TermsConditionsPage from "./pages/TermsConditionsPage"
 import ServicesPage from "./pages/ServicesPage"
 import EmailTestPanel from "./components/EmailTestPanel"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
   const [showScrollToTop, setShowScrollToTop] = useState(false)
@@ -38,6 +40,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <main>
@@ -51,6 +54,7 @@ function App() {
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
           </Routes>
         </main>
         <Footer />
