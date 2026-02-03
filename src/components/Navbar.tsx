@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
                 <img
                   src="/scritique_logo.png"
                   alt="Scritique Logo"
-                  className="h-[4.5rem] w-auto object-contain"
+                  className="h-14 w-auto object-contain"
                 />
                 <div className="flex flex-col items-center">
                   <h1 className="text-2xl font-bold bg-gradient-to-r from-green-800 to-green-600 bg-clip-text text-transparent">
