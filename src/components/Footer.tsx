@@ -4,7 +4,6 @@ import {
   EnvelopeIcon,
   PhoneIcon,
   MapPinIcon,
-  AcademicCapIcon,
   ClockIcon
 } from "@heroicons/react/24/outline"
 import { ClickableEmail, ClickablePhone } from "../utils/contactUtils"
