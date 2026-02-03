@@ -19,7 +19,11 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="md:col-span-3">
             <div className="flex items-center mb-4">
-              <AcademicCapIcon className="h-8 w-8 text-purple-400 mr-3" />
+              <img
+                src="/scritique_logo.png"
+                alt="Scritique Logo"
+                className="h-10 w-auto object-contain mr-3 bg-white rounded-full p-1"
+              />
               <h3 className="text-2xl font-bold text-white">Scritique</h3>
             </div>
 
@@ -42,12 +46,6 @@ const Footer: React.FC = () => {
                   >
                     +91-9540800660
                   </ClickablePhone>
-                  <ClickablePhone
-                    phoneNumber="+91-9773906079"
-                    className="hover:text-purple-400 block"
-                  >
-                    +91-9773906079
-                  </ClickablePhone>
                 </div>
               </div>
               <div className="flex items-center">
@@ -64,10 +62,9 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Social Media Section */}
-          <div className="md:col-span-7 flex items-center">
-            <div className="border-t border-white mb-6 pt-6 w-full">
+          <div className="md:col-span-7 border-l border-gray-800 md:pl-12 ml-4 md:ml-0">
+            <div className="w-full">
               <div className="mb-4">
-                <span className="text-white text-sm">SOCIAL</span>
                 <p className="text-white text-lg font-semibold mt-1">
                   Follow us for the latest updates
                 </p>
