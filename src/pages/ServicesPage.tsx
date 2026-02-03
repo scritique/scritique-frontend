@@ -10,7 +10,7 @@ const ServicesPage: React.FC = () => {
     Articles: [
       {
         title: "Basic",
-        price: "$100",
+        price: "$200",
         features: [
           "1 Article",
           "3 (+1 complimentary) revisions",
@@ -21,7 +21,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$400",
+        price: "$500",
         features: [
           "3 Articles",
           "3 (+1 complimentary) revisions per article",
@@ -33,7 +33,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$650",
+        price: "$750",
         features: [
           "5 Articles",
           "3 (+1 complimentary) revisions per article",
@@ -47,7 +47,7 @@ const ServicesPage: React.FC = () => {
     Theses: [
       {
         title: "Basic",
-        price: "$250",
+        price: "$300",
         features: [
           "1 Thesis",
           "Basic formatting",
@@ -59,7 +59,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$350",
+        price: "$500",
         features: [
           "1 Thesis",
           "Masterchart",
@@ -72,7 +72,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$500",
+        price: "$600",
         features: [
           "1 Thesis",
           "Proposal",
@@ -89,7 +89,7 @@ const ServicesPage: React.FC = () => {
     PPT: [
       {
         title: "Basic",
-        price: "$100",
+        price: "$120",
         features: [
           "1 PPT",
           "20-25 slides",
@@ -100,7 +100,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$300",
+        price: "$330",
         features: [
           "3 PPT",
           "20-25 slides",
@@ -112,7 +112,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$500",
+        price: "$450",
         features: [
           "5 PPT",
           "30+ slides",
@@ -158,8 +158,8 @@ const ServicesPage: React.FC = () => {
             className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto"
           >
             At Scritique, we offer a comprehensive range of writing and editing
-            services tailored to the needs of medical researchers, students, and
-            healthcare professionals.
+            services tailored to the needs of researchers, students, and
+            professionals.
           </motion.p>
         </div>
       </section>
@@ -174,11 +174,10 @@ const ServicesPage: React.FC = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                    activeTab === tab
-                                        ? "bg-pink-400 text-gray-900 shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
-                  }`}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${activeTab === tab
+                    ? "bg-pink-400 text-gray-900 shadow-sm"
+                    : "text-gray-600 hover:text-gray-900"
+                    }`}
                 >
                   {tab}
                 </button>

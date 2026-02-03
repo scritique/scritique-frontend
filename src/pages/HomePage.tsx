@@ -277,7 +277,7 @@ const HomePage: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100 opacity-30 transform rotate-12"></div>
                 <div className="relative text-center">
                   <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                    18
+                    76
                   </div>
                   <div className="text-sm text-gray-600">active writers</div>
                 </div>
@@ -287,7 +287,7 @@ const HomePage: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100 opacity-30 transform -rotate-12"></div>
                 <div className="relative text-center">
                   <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                    5+
+                    12+
                   </div>
                   <div className="text-sm text-gray-600">years in business</div>
                 </div>
@@ -297,7 +297,7 @@ const HomePage: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100 opacity-30 transform rotate-12"></div>
                 <div className="relative text-center">
                   <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  50+
+                    50+
                   </div>
                   <div className="text-sm text-gray-600">disciplines</div>
                 </div>
@@ -307,7 +307,7 @@ const HomePage: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100 opacity-30 transform -rotate-12"></div>
                 <div className="relative text-center">
                   <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  4000+
+                    10560+
                   </div>
                   <div className="text-sm text-gray-600">completed orders</div>
                 </div>
@@ -366,19 +366,18 @@ const HomePage: React.FC = () => {
                                 duration: 0.5,
                                 delay: cardIndex * 0.1
                               }}
-                              className={`px-2 ${
-                                cardsPerView === 1 ? 'w-full' :
+                              className={`px-2 ${cardsPerView === 1 ? 'w-full' :
                                 cardsPerView === 2 ? 'w-1/2' :
-                                'w-1/3'
-                              }`}
+                                  'w-1/3'
+                                }`}
                             >
                               <div className="card h-full bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                                 <div className="p-4 sm:p-6 text-center">
                                   <div className="w-12 h-12 flex items-center justify-center mx-auto mb-3">
                                     {typeof card.icon === 'string' ? (
-                                      <img 
-                                        src={card.icon} 
-                                        alt={card.title} 
+                                      <img
+                                        src={card.icon}
+                                        alt={card.title}
                                         className="w-10 h-10 object-contain"
                                       />
                                     ) : (
@@ -408,11 +407,10 @@ const HomePage: React.FC = () => {
                 <button
                   key={i}
                   onClick={() => setCurrentCardIndex(i)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentCardIndex === i
-                      ? "bg-purple-600"
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${currentCardIndex === i
+                    ? "bg-purple-600"
+                    : "bg-gray-300 hover:bg-gray-400"
+                    }`}
                 />
               ))}
             </div>
@@ -455,15 +453,15 @@ const HomePage: React.FC = () => {
                   </p>
                 </div>
                 <div className="flex-shrink-0 ml-4">
-                  <img 
-                    src="/qualified-writers-icon.png" 
-                    alt="Qualified Academic Writers" 
+                  <img
+                    src="/qualified-writers-icon.png"
+                    alt="Qualified Academic Writers"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
               </motion.div>
 
-              {/* Custom-Written Content */}
+              {/* On-Time Delivery */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -472,18 +470,17 @@ const HomePage: React.FC = () => {
               >
                 <div className="flex-1 text-right">
                   <h3 className="text-lg font-bold mb-2 text-right text-gray-900">
-                    Custom-Written Content
+                    On-Time Delivery
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed text-right">
-                    Every piece is written from scratch based on your specific
-                    requirements — no templates, no plagiarism, just original work
-                    that reflects your voice and vision.
+                    We respect your deadlines. Our efficient workflow ensures you
+                    receive your completed project on time, every time.
                   </p>
                 </div>
                 <div className="flex-shrink-0 ml-4">
-                  <img 
-                    src="/custom-content-icon.png" 
-                    alt="Custom-Written Content" 
+                  <img
+                    src="/on-time-delivery-icon.png"
+                    alt="On-Time Delivery"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
@@ -507,9 +504,9 @@ const HomePage: React.FC = () => {
                   </p>
                 </div>
                 <div className="flex-shrink-0 ml-4">
-                  <img 
-                    src="/global-standards-icon.png" 
-                    alt="Global Academic Standards" 
+                  <img
+                    src="/global-standards-icon.png"
+                    alt="Global Academic Standards"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
@@ -524,9 +521,9 @@ const HomePage: React.FC = () => {
               className="relative lg:w-1/3 flex justify-center"
             >
               <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl">
-                <img 
-                  src="/why-choose-us.png" 
-                  alt="Academic Team" 
+                <img
+                  src="/why-choose-us.png"
+                  alt="Academic Team"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -534,7 +531,7 @@ const HomePage: React.FC = () => {
 
             {/* Right Column - 3 Features */}
             <div className="space-y-8 lg:w-1/3 lg:pl-8">
-              {/* On-Time Delivery */}
+              {/* Custom-Written Content */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -542,19 +539,20 @@ const HomePage: React.FC = () => {
                 className="flex items-start space-x-4 h-32"
               >
                 <div className="flex-shrink-0">
-                  <img 
-                    src="/on-time-delivery-icon.png" 
-                    alt="On-Time Delivery" 
+                  <img
+                    src="/custom-content-icon.png"
+                    alt="Custom-Written Content"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2 text-gray-900">
-                    On-Time Delivery
+                    Custom-Written Content
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    We respect your deadlines. Our efficient workflow ensures you
-                    receive your completed project on time, every time.
+                    Every piece is written from scratch based on your specific
+                    requirements — no templates, no plagiarism, just original work
+                    that reflects your voice and vision.
                   </p>
                 </div>
               </motion.div>
@@ -567,9 +565,9 @@ const HomePage: React.FC = () => {
                 className="flex items-start space-x-4 h-32"
               >
                 <div className="flex-shrink-0">
-                  <img 
-                    src="/confidentiality-icon.png" 
-                    alt="Confidentiality Guaranteed" 
+                  <img
+                    src="/confidentiality-icon.png"
+                    alt="Confidentiality Guaranteed"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
@@ -592,9 +590,9 @@ const HomePage: React.FC = () => {
                 className="flex items-start space-x-4 h-32"
               >
                 <div className="flex-shrink-0">
-                  <img 
-                    src="/support-icon.png" 
-                    alt="24/7 Support" 
+                  <img
+                    src="/support-icon.png"
+                    alt="24/7 Support"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
@@ -625,7 +623,7 @@ const HomePage: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="card text-center">
               <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-green-600">20%</span>
@@ -633,16 +631,6 @@ const HomePage: React.FC = () => {
               <h3 className="text-xl font-semibold mb-2">First Order</h3>
               <p className="text-gray-600">
                 Get 20% off on your first order with us
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">15%</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Bulk Orders</h3>
-              <p className="text-gray-600">
-                15% discount on orders of 3+ assignments
               </p>
             </div>
 

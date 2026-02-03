@@ -51,47 +51,43 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Tab Navigation */}
-      <section className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <section className="bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center space-x-8 py-6">
             <button
               onClick={() => scrollToSection("why-us")}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                activeTab === "why-us"
-                  ? "bg-teal-100 text-gray-800 border-2 border-teal-300"
-                  : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
-              }`}
+              className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${activeTab === "why-us"
+                ? "bg-teal-100 text-gray-800 border-2 border-teal-300"
+                : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
+                }`}
             >
               Our Mission
             </button>
 
             <button
               onClick={() => scrollToSection("our-values")}
-              className={`px-6 py-3 font-medium transition-all duration-200 ${
-                activeTab === "our-values"
-                  ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
-                  : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
-              }`}
+              className={`px-6 py-3 font-medium transition-all duration-200 ${activeTab === "our-values"
+                ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
+                : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
+                }`}
             >
               Our Values
             </button>
             <button
               onClick={() => scrollToSection("meet-our-team")}
-              className={`px-6 py-3 font-medium transition-all duration-200 ${
-                activeTab === "meet-our-team"
-                  ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
-                  : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
-              }`}
+              className={`px-6 py-3 font-medium transition-all duration-200 ${activeTab === "meet-our-team"
+                ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
+                : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
+                }`}
             >
               Our Team
             </button>
             <button
               onClick={() => scrollToSection("our-clientele")}
-              className={`px-6 py-3 font-medium transition-all duration-200 ${
-                activeTab === "our-clientele"
-                  ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
-                  : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
-              }`}
+              className={`px-6 py-3 font-medium transition-all duration-200 ${activeTab === "our-clientele"
+                ? "bg-teal-100 text-gray-800 border-2 border-teal-300 rounded-lg"
+                : "text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-teal-300"
+                }`}
             >
               Our Clientele
             </button>
@@ -140,9 +136,9 @@ const AboutUsPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-6">
-                <img 
-                  src="/integrity-icon.png" 
-                  alt="Integrity" 
+                <img
+                  src="/integrity-icon.png"
+                  alt="Integrity"
                   className="w-16 h-16 object-contain"
                 />
               </div>
@@ -162,9 +158,9 @@ const AboutUsPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-6">
-                <img 
-                  src="/precision-icon.png" 
-                  alt="Precision" 
+                <img
+                  src="/precision-icon.png"
+                  alt="Precision"
                   className="w-16 h-16 object-contain"
                 />
               </div>
@@ -184,9 +180,9 @@ const AboutUsPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-6">
-                <img 
-                  src="/partnership-icon.png" 
-                  alt="Partnership" 
+                <img
+                  src="/partnership-icon.png"
+                  alt="Partnership"
                   className="w-20 h-20 object-contain"
                 />
               </div>
@@ -220,9 +216,9 @@ const AboutUsPage: React.FC = () => {
               className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center justify-center mx-auto mb-4 w-16 h-16">
-                <img 
-                  src="/researchers-icon.png" 
-                  alt="Researchers" 
+                <img
+                  src="/researchers-icon.png"
+                  alt="Researchers"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -242,9 +238,9 @@ const AboutUsPage: React.FC = () => {
               className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center justify-center mx-auto mb-4 w-16 h-16">
-                <img 
-                  src="/writers-icon.png" 
-                  alt="Writers" 
+                <img
+                  src="/writers-icon.png"
+                  alt="Writers"
                   className="w-12 h-12 object-contain"
                 />
               </div>
@@ -264,9 +260,9 @@ const AboutUsPage: React.FC = () => {
               className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center justify-center mx-auto mb-4 w-16 h-16">
-                <img 
-                  src="/editors-icon.png" 
-                  alt="Editors" 
+                <img
+                  src="/editors-icon.png"
+                  alt="Editors"
                   className="w-full h-full object-contain"
                 />
               </div>
