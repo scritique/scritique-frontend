@@ -24,13 +24,13 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     setIsSubmitting(true)
     setSubmitMessage(null)
-    
+
     try {
       const result = await sendContactFormEmail(formData)
-      
+
       if (result.success) {
         setSubmitMessage({ type: 'success', text: "Thank you for your message! We will get back to you soon." })
         setFormData({
@@ -64,17 +64,6 @@ const ContactPage: React.FC = () => {
     })
   }
 
-  const indianCities = [
-    "Ahmedabad",
-    "Mumbai",
-    "Bengaluru",
-    "Delhi",
-    "Kolkata",
-    "Hyderabad",
-    "Chennai"
-  ]
-
-  const internationalLocations = ["Malaysia", "Dubai", "Singapore"]
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -103,79 +92,6 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Presence Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">
-              Our Presence
-            </h2>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            {/* Location Lists */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid md:grid-cols-2 gap-12"
-            >
-              {/* Indian Cities */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                  <MapPinIcon className="h-5 w-5 text-red-500 mr-2" />
-                  Indian Cities
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {indianCities.map((city, index) => (
-                    <motion.div
-                      key={city}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                      className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors duration-200"
-                    >
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <span className="text-gray-700 font-medium">{city}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* International Locations */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                  <MapPinIcon className="h-5 w-5 text-blue-500 mr-2" />
-                  International Presence
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {internationalLocations.map((location, index) => (
-                    <motion.div
-                      key={location}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
-                      className="flex items-center space-x-2 bg-blue-50 rounded-lg p-3 hover:bg-blue-100 transition-colors duration-200"
-                    >
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <span className="text-gray-700 font-medium">
-                        {location}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Methods Section */}
       <section className="py-16 bg-gray-50">
@@ -204,9 +120,9 @@ const ContactPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-4">
-                <img 
-                  src="/call-us-icon.png" 
-                  alt="Call Us" 
+                <img
+                  src="/call-us-icon.png"
+                  alt="Call Us"
                   className="w-24 h-24 object-contain opacity-80"
                 />
               </div>
@@ -232,9 +148,9 @@ const ContactPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-4">
-                <img 
-                  src="/email-us-icon.png" 
-                  alt="Email Us" 
+                <img
+                  src="/email-us-icon.png"
+                  alt="Email Us"
                   className="w-24 h-24 object-contain opacity-80"
                 />
               </div>
@@ -260,9 +176,9 @@ const ContactPage: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center mx-auto mb-4">
-                <img 
-                  src="/chat-with-us-icon.png" 
-                  alt="Chat With Us" 
+                <img
+                  src="/chat-with-us-icon.png"
+                  alt="Chat With Us"
                   className="w-24 h-24 object-contain opacity-80"
                 />
               </div>
@@ -275,7 +191,7 @@ const ContactPage: React.FC = () => {
               <button
                 className="text-lg font-semibold text-purple-600 hover:text-purple-700 transition-colors duration-200 underline"
                 onClick={() => {
-                  const phoneNumber = "919773906079"
+                  const phoneNumber = "919540800660"
                   const message = "Hello! I'm interested in your academic writing services."
                   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
                   window.open(whatsappUrl, "_blank")
@@ -310,11 +226,115 @@ const ContactPage: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-gray-50 p-8 rounded-lg lg:col-span-2"
             >
-            {/* Form Header */}
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">MESSAGE FORM</h3>
-              {/* Decorative border with diamond shapes */}
-              <div className="flex justify-center space-x-2 mb-6">
+              {/* Form Header */}
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">MESSAGE FORM</h3>
+                {/* Decorative border with diamond shapes */}
+                <div className="flex justify-center space-x-2 mb-6">
+                  {Array.from({ length: 12 }, (_, i) => (
+                    <div
+                      key={i}
+                      className="w-3 h-3 bg-yellow-400 transform rotate-45"
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Form Content */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Left side - Large text area */}
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Your message here..."
+                    className="w-full h-64 p-4 border border-gray-300 bg-gray-100 rounded resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    value={formData.message}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                {/* Right side - Input fields and send button */}
+                <div className="flex flex-col justify-between">
+                  <div className="space-y-6">
+                    {/* Name field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500 mb-2">
+                        NAME
+                      </label>
+                      <div className="border-b-2 border-gray-300">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Your full name"
+                          className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500 mb-2">
+                        E-MAIL
+                      </label>
+                      <div className="border-b-2 border-gray-300">
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="your.email@example.com"
+                          className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Phone field */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500 mb-2">
+                        PHONE
+                      </label>
+                      <div className="border-b-2 border-gray-300">
+                        <input
+                          type="tel"
+                          name="letters"
+                          placeholder="Your phone number"
+                          className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
+                          value={formData.letters}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Send button */}
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className={`w-full font-bold py-3 px-6 rounded transition-colors duration-200 mt-6 ${isSubmitting
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-yellow-300 hover:bg-yellow-400 text-black'
+                      }`}
+                  >
+                    {isSubmitting ? 'SENDING...' : 'SEND'}
+                  </button>
+
+                  {/* Submit message */}
+                  {submitMessage && (
+                    <div className={`mt-4 p-3 rounded-lg text-sm ${submitMessage.type === 'success'
+                      ? 'bg-green-100 text-green-800 border border-green-200'
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                      }`}>
+                      {submitMessage.text}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Bottom decorative border */}
+              <div className="flex justify-center space-x-2 mt-6">
                 {Array.from({ length: 12 }, (_, i) => (
                   <div
                     key={i}
@@ -322,113 +342,7 @@ const ContactPage: React.FC = () => {
                   ></div>
                 ))}
               </div>
-            </div>
-
-            {/* Form Content */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Left side - Large text area */}
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Your message here..."
-                  className="w-full h-64 p-4 border border-gray-300 bg-gray-100 rounded resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  value={formData.message}
-                  onChange={handleChange}
-                ></textarea>
-              </div>
-
-              {/* Right side - Input fields and send button */}
-              <div className="flex flex-col justify-between">
-                <div className="space-y-6">
-                  {/* Name field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-2">
-                      NAME
-                    </label>
-                    <div className="border-b-2 border-gray-300">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Your full name"
-                        className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Email field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-2">
-                      E-MAIL
-                    </label>
-                    <div className="border-b-2 border-gray-300">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="your.email@example.com"
-                        className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Phone field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-2">
-                      PHONE
-                    </label>
-                    <div className="border-b-2 border-gray-300">
-                      <input
-                        type="tel"
-                        name="letters"
-                        placeholder="Your phone number"
-                        className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
-                        value={formData.letters}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Send button */}
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  className={`w-full font-bold py-3 px-6 rounded transition-colors duration-200 mt-6 ${
-                    isSubmitting 
-                      ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-yellow-300 hover:bg-yellow-400 text-black'
-                  }`}
-                >
-                  {isSubmitting ? 'SENDING...' : 'SEND'}
-                </button>
-
-                {/* Submit message */}
-                {submitMessage && (
-                  <div className={`mt-4 p-3 rounded-lg text-sm ${
-                    submitMessage.type === 'success' 
-                      ? 'bg-green-100 text-green-800 border border-green-200' 
-                      : 'bg-red-100 text-red-800 border border-red-200'
-                  }`}>
-                    {submitMessage.text}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Bottom decorative border */}
-            <div className="flex justify-center space-x-2 mt-6">
-              {Array.from({ length: 12 }, (_, i) => (
-                <div
-                  key={i}
-                  className="w-3 h-3 bg-yellow-400 transform rotate-45"
-                ></div>
-              ))}
-            </div>
-          </motion.div>
+            </motion.div>
 
             {/* Right Column - Contact Information */}
             <motion.div
@@ -438,7 +352,7 @@ const ContactPage: React.FC = () => {
               className="bg-white rounded-lg p-8 shadow-lg"
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-10 text-center font-serif">Contact Information</h2>
-              
+
               <div className="space-y-10">
                 {/* Office Address */}
                 <div className="flex items-center space-x-4">
@@ -494,7 +408,7 @@ const ContactPage: React.FC = () => {
                           +91-9540800660
                         </ClickablePhone>
                       </div>
-                      <div className="flex items-center space-x-2">
+                      {/* <div className="flex items-center space-x-2">
                         <span className="text-gray-500 text-sm">Alt:</span>
                         <ClickablePhone
                           phoneNumber="+91-9540800660"
@@ -502,7 +416,7 @@ const ContactPage: React.FC = () => {
                         >
                           +91-9773906079
                         </ClickablePhone>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

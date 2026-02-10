@@ -221,6 +221,112 @@ const ServicesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* What's Included in Every Order */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
+              What's Included in Every Order
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-center"
+            >
+              <div className="flex items-center justify-center mx-auto mb-4">
+                <img
+                  src="/plagiarism-removal-icon.png"
+                  alt="Plagiarism-Free Content"
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Plagiarism-Free Content
+              </h3>
+              <p className="text-gray-600">
+                Every piece is written from scratch with guaranteed originality
+                and proper citations.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center"
+            >
+              <div className="flex items-center justify-center mx-auto mb-4">
+                <img
+                  src="/on-time-delivery-icon.png"
+                  alt="On-Time Delivery"
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                On-Time Delivery
+              </h3>
+              <p className="text-gray-600">
+                We guarantee delivery within the specified timeframe, never
+                missing deadlines.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center"
+            >
+              <div className="flex items-center justify-center mx-auto mb-4">
+                <img
+                  src="/free-revisions-icon.png"
+                  alt="Free Revisions"
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Free Revisions
+              </h3>
+              <p className="text-gray-600">
+                Multiple rounds of revisions included to ensure your complete
+                satisfaction.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center"
+            >
+              <div className="flex items-center justify-center mx-auto mb-4">
+                <img
+                  src="/support-icon.png"
+                  alt="24/7 Support"
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                24/7 Support
+              </h3>
+              <p className="text-gray-600">
+                Round-the-clock customer support to address any questions or
+                concerns.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview Section */}
       <section className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
@@ -498,111 +604,7 @@ const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* What's Included in Every Order */}
-      <section className="section-padding bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
-              What's Included in Every Order
-            </h2>
-          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center mx-auto mb-4">
-                <img
-                  src="/plagiarism-removal-icon.png"
-                  alt="Plagiarism-Free Content"
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Plagiarism-Free Content
-              </h3>
-              <p className="text-gray-600">
-                Every piece is written from scratch with guaranteed originality
-                and proper citations.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center mx-auto mb-4">
-                <img
-                  src="/on-time-delivery-icon.png"
-                  alt="On-Time Delivery"
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                On-Time Delivery
-              </h3>
-              <p className="text-gray-600">
-                We guarantee delivery within the specified timeframe, never
-                missing deadlines.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center mx-auto mb-4">
-                <img
-                  src="/free-revisions-icon.png"
-                  alt="Free Revisions"
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Free Revisions
-              </h3>
-              <p className="text-gray-600">
-                Multiple rounds of revisions included to ensure your complete
-                satisfaction.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center"
-            >
-              <div className="flex items-center justify-center mx-auto mb-4">
-                <img
-                  src="/support-icon.png"
-                  alt="24/7 Support"
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                24/7 Support
-              </h3>
-              <p className="text-gray-600">
-                Round-the-clock customer support to address any questions or
-                concerns.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

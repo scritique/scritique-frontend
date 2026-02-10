@@ -9,6 +9,7 @@ import {
   CheckCircleIcon
 } from "@heroicons/react/24/outline"
 import TestimonialSlider from "../components/TestimonialSlider"
+import PresenceSection from "../components/PresenceSection"
 import ContactPopup from "../components/ContactPopup"
 import ExpertForm from "../components/ExpertForm"
 
@@ -611,11 +612,14 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Our Presence Section */}
+      <PresenceSection />
+
       {/* Testimonial Slider */}
       <TestimonialSlider />
 
       {/* Student Discounts Section */}
-      <section className="section-padding bg-gradient-to-r from-green-50 to-blue-50">
+      {/* <section className="section-padding bg-gradient-to-r from-green-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
@@ -643,7 +647,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Speak with Expert Section */}
       <section className="section-padding hero-gradient text-white relative overflow-hidden">

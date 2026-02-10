@@ -11,67 +11,49 @@ const TestimonialSlider: React.FC = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "Graduate Student",
-      university: "Stanford University",
+      name: "Dr Praveen Kumar",
+      // role: "Graduate Student",
+      // university: "Stanford University",
       content:
-        "The thesis writing service was exceptional. They delivered my research paper on time with excellent quality. The revisions were quick and professional.",
+        "I’m very satisfied with the quality of the work delivered. The team maintained excellent communication and ensured timely delivery, even earlier than promised. Honestly, I don’t see anything that needs improvement.",
       rating: 5,
-      service: "Thesis Writing"
+      // service: "Thesis Writing"
     },
     {
-      name: "Michael Chen",
-      role: "PhD Candidate",
-      university: "MIT",
+      name: "Dr Ritu Aggarwal",
+      // role: "PhD Candidate",
+      // university: "MIT",
       content:
-        "I was impressed by the quality of the research article they wrote for me. The content was well-researched and perfectly formatted for publication.",
+        "I had a really good and relaxing experience working with this team. The entire process was smooth and stress-free, and the quality of writing was excellent. The work was delivered before the deadline, and communication was clear and professional throughout. I highly recommend them to other researchers.",
       rating: 5,
-      service: "Research Article"
+      // service: "Research Article"
     },
     {
-      name: "Emily Rodriguez",
-      role: "MBA Student",
-      university: "Harvard Business School",
+      name: "Rupak Chaubey",
+      // role: "MBA Student",
+      // university: "Harvard Business School",
       content:
-        "The PPT presentation they created was outstanding. Professional design with engaging content that helped me ace my presentation.",
+        "What really impressed me was how confidently the team handled my thesis order. They had a strong understanding of academic requirements and paid close attention to every detail. The thesis was well-structured, original, and carefully aligned with the guidelines I shared. The support felt personalised which made the entire experience reassuring. I would definitely trust them again for future academic projects.",
       rating: 5,
-      service: "PPT Presentation"
+      // service: "PPT Presentation"
     },
     {
-      name: "David Thompson",
-      role: "Undergraduate Student",
-      university: "UC Berkeley",
+      name: "Apurv Saket",
+      // role: "Graduate Student",
+      // university: "Civil Engineering",
       content:
-        "Great experience with their academic writing services. The student discount made it affordable, and the quality exceeded my expectations.",
+        "The team showed strong subject knowledge and handled revisions with patience and professionalism. It felt reassuring to work with a service that genuinely values accuracy and client satisfaction.",
       rating: 5,
-      service: "Academic Writing"
+      // service: "Thesis Writing"
     },
     {
-      name: "Subodh Kumar",
-      role: "Graduate Student",
-      university: "Civil Engineering",
+      name: "Nauman Yaqueen",
+      // role: "Research Scholar",
+      // university: "Biomedical Research",
       content:
-        "As a non-native English speaker, I struggled with expressing complex ideas. This service helped me polish my thesis to perfection. It was well-structured and delivered before deadline. My professor even commented on the clarity of my arguments.",
+        "As someone who is very particular about academic standards, I was impressed by how thoughtfully the work was handled. The arguments were clear, the formatting was precise, and the references were accurately managed. It felt like the work was done by someone who truly understands academic expectations. This gave me a lot of confidence in the final output.",
       rating: 5,
-      service: "Thesis Writing"
-    },
-    {
-      name: "Manish Kumar",
-      role: "Research Scholar",
-      university: "Biomedical Research",
-      content:
-        "They helped me with statistical analysis for my research article. SPSS output was clearly explained, and the results were integrated very well into my results portion.",
-      rating: 5,
-      service: "Statistical Analysis"
-    },
-    {
-      name: "Dr. Prashant Kishore",
-      role: "Medical Professional",
-      university: "Internal Medicine",
-      content:
-        "I've used their academic writing services multiple times, but this was my first abstract order for a medical conference. They translated clinical results into a concise, high-impact abstract that got accepted at an international diabetes-focused symposium.",
-      rating: 5,
-      service: "Abstract Writing"
+      // service: "Statistical Analysis"
     }
   ]
 
@@ -151,14 +133,14 @@ const TestimonialSlider: React.FC = () => {
                           <h4 className="font-semibold text-gray-900">
                             {testimonials[currentIndex].name}
                           </h4>
-                          <p className="text-gray-600">
+                          {/* <p className="text-gray-600">
                             {testimonials[currentIndex].role} •{" "}
                             {testimonials[currentIndex].university}
-                          </p>
+                          </p> */}
                         </div>
-                        <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                        {/* <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                           {testimonials[currentIndex].service}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -188,11 +170,10 @@ const TestimonialSlider: React.FC = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentIndex
-                    ? "bg-primary-600"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }`}
+                className={`w-3 h-3 rounded-full transition-colors duration-200 ${index === currentIndex
+                  ? "bg-primary-600"
+                  : "bg-gray-300 hover:bg-gray-400"
+                  }`}
               />
             ))}
           </div>
