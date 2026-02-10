@@ -18,20 +18,26 @@ const JobRolePage: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [fileError, setFileError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
+    if (fileError) {
+      setSubmitMessage({ type: 'error', text: "Please resolve the file error before submitting." })
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitMessage(null)
-    
+
     try {
       const result = await sendJobApplicationEmail(formData, jobRole?.title || 'Unknown Position')
-      
+
       if (result.success) {
-        setSubmitMessage({ 
-          type: 'success', 
-          text: "Thank you for your application! We will review it and get back to you within 3-5 business days." 
+        setSubmitMessage({
+          type: 'success',
+          text: "Thank you for your application! We will review it and get back to you within 3-5 business days."
         })
         setFormData({
           firstName: "",
@@ -42,17 +48,18 @@ const JobRolePage: React.FC = () => {
           coverLetter: "",
           resume: null
         })
+        setFileError(null)
       } else {
-        setSubmitMessage({ 
-          type: 'error', 
-          text: result.message || "There was an error submitting your application. Please try again or contact us directly." 
+        setSubmitMessage({
+          type: 'error',
+          text: result.message || "There was an error submitting your application. Please try again or contact us directly."
         })
       }
     } catch (error) {
       console.error('Error submitting application:', error)
-      setSubmitMessage({ 
-        type: 'error', 
-        text: "There was an error submitting your application. Please try again or contact us directly." 
+      setSubmitMessage({
+        type: 'error',
+        text: "There was an error submitting your application. Please try again or contact us directly."
       })
     } finally {
       setIsSubmitting(false)
@@ -70,9 +77,18 @@ const JobRolePage: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0]
+      const MAX_SIZE = 10 * 1024 * 1024 // 10MB in bytes
+
+      if (file.size > MAX_SIZE) {
+        setFileError(`File is too large (${(file.size / (1024 * 1024)).toFixed(2)} MB). Max limit is 10MB.`)
+      } else {
+        setFileError(null)
+      }
+
       setFormData({
         ...formData,
-        resume: e.target.files[0]
+        resume: file
       })
     }
   }
@@ -724,32 +740,37 @@ const JobRolePage: React.FC = () => {
                       required
                       accept=".pdf,.doc,.docx"
                       onChange={handleFileChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100 ${fileError ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                     />
-                    <p className="text-sm text-gray-500 mt-1">
-                      Accepted formats: PDF, DOC, DOCX (Max 5MB)
-                    </p>
+                    {fileError ? (
+                      <p className="text-sm text-red-600 mt-1 font-semibold">
+                        {fileError}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-gray-500 mt-1">
+                        Accepted formats: PDF, DOC, DOCX (Max 10MB)
+                      </p>
+                    )}
                   </div>
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-200 ${
-                      isSubmitting 
-                        ? 'bg-gray-400 cursor-not-allowed' 
+                    disabled={isSubmitting || !!fileError}
+                    className={`w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-200 ${isSubmitting || !!fileError
+                        ? 'bg-gray-400 cursor-not-allowed'
                         : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white'
-                    }`}
+                      }`}
                   >
                     {isSubmitting ? 'Submitting...' : 'Submit Application'}
                   </button>
 
                   {/* Submit message */}
                   {submitMessage && (
-                    <div className={`mt-4 p-3 rounded-lg text-sm ${
-                      submitMessage.type === 'success' 
-                        ? 'bg-green-100 text-green-800 border border-green-200' 
-                        : 'bg-red-100 text-red-800 border border-red-200'
-                    }`}>
+                    <div className={`mt-4 p-3 rounded-lg text-sm ${submitMessage.type === 'success'
+                      ? 'bg-green-100 text-green-800 border border-green-200'
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                      }`}>
                       {submitMessage.text}
                     </div>
                   )}
