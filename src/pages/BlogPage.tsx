@@ -11,8 +11,8 @@ const BlogPage: React.FC = () => {
       author: 'Dr. Sarah Johnson',
       date: '2024-01-15',
       category: 'Academic Writing',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      readTime: '8 min read'
     },
     {
       id: 2,
@@ -134,15 +134,15 @@ const BlogPage: React.FC = () => {
                     <span className="mx-2">•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                     {post.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-gray-500">
                       <UserIcon className="h-4 w-4 mr-1" />
