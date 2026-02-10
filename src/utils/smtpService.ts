@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 interface EmailData {
   to_email: string
@@ -7,7 +7,7 @@ interface EmailData {
   message: string
   from_name?: string
   from_email?: string
-  phone?: string                               
+  phone?: string
   service?: string
   experience?: string
   cover_letter?: string
@@ -26,15 +26,15 @@ export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
       },
       body: JSON.stringify(data)
     });
-    
+
     if (!response.ok) {
       const errorData = await response.json();
       console.error('Email API Error:', errorData);
       return false;
     }
-    
+
     const result = await response.json();
-    
+
     if (result.success) {
       console.log('Email sent successfully:', {
         messageId: result.messageId,
@@ -46,7 +46,7 @@ export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
       console.error('Email API returned error:', result.error);
       return false;
     }
-    
+
   } catch (error) {
     console.error('Email API Error:', error);
     return false;
@@ -57,26 +57,26 @@ export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
 export const testSMTPConnection = async (): Promise<{ success: boolean; message: string }> => {
   try {
     const response = await fetch(`${API_BASE_URL}/health`);
-    
+
     if (!response.ok) {
       const errorData = await response.json();
-      return { 
-        success: false, 
-        message: errorData.message || 'Backend service unavailable' 
+      return {
+        success: false,
+        message: errorData.message || 'Backend service unavailable'
       };
     }
-    
+
     await response.json(); // Response is OK, backend is running
-    return { 
-      success: true, 
-      message: 'Backend service is running and ready to send emails' 
+    return {
+      success: true,
+      message: 'Backend service is running and ready to send emails'
     };
-    
+
   } catch (error) {
     console.error('Backend connection test failed:', error);
-    return { 
-      success: false, 
-      message: `Backend connection failed: ${error instanceof Error ? error.message : 'Unknown error'}` 
+    return {
+      success: false,
+      message: `Backend connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`
     };
   }
 }
@@ -91,7 +91,7 @@ export const getBackendStatus = async (): Promise<{
 }> => {
   try {
     const response = await fetch(`${API_BASE_URL}/health`);
-    
+
     if (!response.ok) {
       return {
         status: 'Error',
@@ -101,7 +101,7 @@ export const getBackendStatus = async (): Promise<{
         missingVars: ['Backend API not responding']
       };
     }
-    
+
     const result = await response.json();
     return {
       status: result.status,
@@ -110,7 +110,7 @@ export const getBackendStatus = async (): Promise<{
       configured: true,
       missingVars: []
     };
-    
+
   } catch (error) {
     console.error('Failed to get backend status:', error);
     return {
