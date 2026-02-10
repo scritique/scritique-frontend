@@ -15,11 +15,11 @@ interface EmailData {
   message: string
   from_name?: string
   from_email?: string
-  phone?: string                               
+  phone?: string
   service?: string
   experience?: string
   cover_letter?: string
-  resume?: string
+  resume?: string | File
   industry?: string
   role_title?: string
   formType?: string
@@ -32,10 +32,10 @@ export const sendEmail = async (data: EmailData, formType: string): Promise<{ su
     if (!data.to_email || !data.subject || !data.message) {
       return { success: false, message: 'Missing required email fields' }
     }
-    
+
     // Send email - backend handles rate limiting based on IP
     const emailSent = await sendEmailViaSMTP(data)
-    
+
     if (emailSent) {
       return { success: true, message: 'Email sent successfully' }
     } else {
@@ -121,7 +121,7 @@ Submitted from: Careers Page
     phone: formData.phone,
     experience: formData.experience,
     cover_letter: formData.coverLetter,
-    resume: formData.resume ? 'Attached' : 'Not provided',
+    resume: formData.resume,
     role_title: roleTitle,
     formType: 'jobApplication'
   }

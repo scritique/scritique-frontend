@@ -11,7 +11,7 @@ interface EmailData {
   service?: string
   experience?: string
   cover_letter?: string
-  resume?: string
+  resume?: string | File
   industry?: string
   role_title?: string
   formType?: string
@@ -19,12 +19,26 @@ interface EmailData {
 
 export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
   try {
+    const isMultipart = data.resume instanceof File;
+    let body: any;
+    let headers: Record<string, string> = {};
+
+    if (isMultipart) {
+      body = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          body.append(key, value);
+        }
+      });
+    } else {
+      headers['Content-Type'] = 'application/json';
+      body = JSON.stringify(data);
+    }
+
     const response = await fetch(`${API_BASE_URL}/sendEmail`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
+      headers,
+      body
     });
 
     if (!response.ok) {
@@ -39,7 +53,8 @@ export const sendEmailViaSMTP = async (data: EmailData): Promise<boolean> => {
       console.log('Email sent successfully:', {
         messageId: result.messageId,
         to: data.to_email,
-        subject: data.subject
+        subject: data.subject,
+        multipart: isMultipart
       });
       return true;
     } else {

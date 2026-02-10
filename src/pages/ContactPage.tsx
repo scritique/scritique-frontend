@@ -13,10 +13,8 @@ const ContactPage: React.FC = () => {
     name: "",
     email: "",
     phone: "",
-    service: "",
     subject: "",
-    message: "",
-    letters: ""
+    message: ""
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -37,10 +35,8 @@ const ContactPage: React.FC = () => {
           name: "",
           email: "",
           phone: "",
-          service: "",
           subject: "",
-          message: "",
-          letters: ""
+          message: ""
         })
       } else {
         setSubmitMessage({ type: 'error', text: result.message || "There was an error sending your message. Please try again or contact us directly." })
@@ -298,10 +294,10 @@ const ContactPage: React.FC = () => {
                       <div className="border-b-2 border-gray-300">
                         <input
                           type="tel"
-                          name="letters"
+                          name="phone"
                           placeholder="Your phone number"
                           className="w-full p-2 bg-transparent border-none outline-none focus:ring-0"
-                          value={formData.letters}
+                          value={formData.phone}
                           onChange={handleChange}
                         />
                       </div>
