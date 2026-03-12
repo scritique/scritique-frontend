@@ -254,37 +254,13 @@ const HomePage: React.FC = () => {
             className="mb-6"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed font-serif">
-              Premium Academic Writing Consultancy
+              Curated Team of IIT Professionals & Doctors
             </h1>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-relaxed mt-4 font-serif">
-              For Ambitious Researchers and Scholars
+              Crafting Content that Stands Out
             </h1>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto"
-          >
-            We provide professional content writing, SEO content and translation
-            services for effective communication, maximum reach and global
-            impact.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex justify-center"
-          >
-            <button
-              className="bg-white text-purple-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              onClick={() => navigate("/about")}
-            >
-              About Us
-            </button>
-          </motion.div>
         </div>
       </section>
 
