@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-10 gap-8">
           {/* Contact Info */}
           <div className="md:col-span-3">
@@ -153,12 +153,13 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+        <div className="mt-2 pt-0">
+          <div className="flex flex-col md:grid md:grid-cols-3 items-center">
+            <div className="hidden md:block"></div>
+            <div className="text-gray-400 text-sm mb-4 md:mb-0 text-center uppercase tracking-wider">
               © {currentYear} Scritique. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm text-gray-400">
+            <div className="flex space-x-6 text-sm text-gray-400 md:justify-end">
               <Link to="/terms-and-conditions" className="hover:text-purple-400 transition-colors">
                 Terms & Conditions
               </Link>
