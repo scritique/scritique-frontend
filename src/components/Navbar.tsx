@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
