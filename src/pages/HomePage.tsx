@@ -19,7 +19,6 @@ const HomePage: React.FC = () => {
   const [showExpertForm, setShowExpertForm] = useState(false)
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null)
-  const navigate = useNavigate()
 
   const faqs = [
     {
@@ -59,7 +58,7 @@ const HomePage: React.FC = () => {
           Absolutely! We offer a 15% student discount when you recommend Scritique to your institution. Just send an email to the official email ids of your supervisor, librarian, IT team, or any other staff member introducing Scritique for Institutions, and make sure to CC us at{" "}
           <ClickableEmail
             email="contact@scritique.com"
-            className="text-white underline hover:text-purple-200"
+            className="text-blue-600 hover:text-blue-800 underline"
           >
             contact@scritique.com
           </ClickableEmail>
