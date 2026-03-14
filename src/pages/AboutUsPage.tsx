@@ -248,7 +248,7 @@ const AboutUsPage: React.FC = () => {
                 Writers
               </h3>
               <p className="text-gray-600">
-                PhD-level writers with publications in peer-reviewed journals
+                IIT professionals, Doctors and PhD-level writers with publications in peer-reviewed journals
                 and extensive academic writing experience.
               </p>
             </motion.div>
@@ -288,46 +288,11 @@ const AboutUsPage: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* 1. Scholars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-lg p-6"
-            >
-              <div className="flex items-center mb-4">
-                <GlobeAltIcon className="h-8 w-8 text-purple-600 mr-3" />
-                <h3 className="text-lg font-semibold text-gray-900">
-                  International Students
-                </h3>
-              </div>
-              <p className="text-gray-600">
-                Supporting students in undergraduate, postgraduate, and PhD
-                programs worldwide.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-lg p-6"
-            >
-              <div className="flex items-center mb-4">
-                <AcademicCapIcon className="h-8 w-8 text-blue-600 mr-3" />
-                <h3 className="text-lg font-semibold text-gray-900">
-                  ESL Learners
-                </h3>
-              </div>
-              <p className="text-gray-600">
-                Non-native English learners needing language support and
-                academic writing assistance.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-white rounded-lg shadow-lg p-6"
             >
               <div className="flex items-center mb-4">
@@ -341,11 +306,50 @@ const AboutUsPage: React.FC = () => {
                 rigorous academic standards.
               </p>
             </motion.div>
+
+            {/* 2. Working Professionals */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-lg shadow-lg p-6"
+            >
+              <div className="flex items-center mb-4">
+                <UsersIcon className="h-8 w-8 text-purple-600 mr-3" />
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Working Professionals
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                Working professionals pursuing higher education while
+                balancing career commitments.
+              </p>
+            </motion.div>
+
+            {/* 3. Institutions */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white rounded-lg shadow-lg p-6"
+            >
+              <div className="flex items-center mb-4">
+                <StarIcon className="h-8 w-8 text-orange-600 mr-3" />
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Institutions
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                Institutions and academic consulting agencies seeking reliable
+                outsourcing partners.
+              </p>
+            </motion.div>
           </div>
 
           {/* Second row with centered cards */}
           <div className="flex justify-center mt-8">
             <div className="grid md:grid-cols-2 gap-8 max-w-2xl">
+              {/* 4. Int. Students */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -353,16 +357,18 @@ const AboutUsPage: React.FC = () => {
                 className="bg-white rounded-lg shadow-lg p-6"
               >
                 <div className="flex items-center mb-4">
-                  <UsersIcon className="h-8 w-8 text-purple-600 mr-3" />
+                  <GlobeAltIcon className="h-8 w-8 text-purple-600 mr-3" />
                   <h3 className="text-lg font-semibold text-gray-900">
-                    Working Professionals
+                    International Students
                   </h3>
                 </div>
                 <p className="text-gray-600">
-                  Working professionals pursuing higher education while
-                  balancing career commitments.
+                  Supporting students in undergraduate, postgraduate, and PhD
+                  programs worldwide.
                 </p>
               </motion.div>
+
+              {/* 5. ESL Learners */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -370,14 +376,14 @@ const AboutUsPage: React.FC = () => {
                 className="bg-white rounded-lg shadow-lg p-6"
               >
                 <div className="flex items-center mb-4">
-                  <StarIcon className="h-8 w-8 text-orange-600 mr-3" />
+                  <AcademicCapIcon className="h-8 w-8 text-blue-600 mr-3" />
                   <h3 className="text-lg font-semibold text-gray-900">
-                    Institutions
+                    ESL Learners
                   </h3>
                 </div>
                 <p className="text-gray-600">
-                  Institutions and academic consulting agencies seeking reliable
-                  outsourcing partners.
+                  Non-native English learners needing language support and
+                  academic writing assistance.
                 </p>
               </motion.div>
             </div>

@@ -10,8 +10,9 @@ import ContactPage from "./pages/ContactPage"
 import CareersPage from "./pages/CareersPage"
 import JobRolePage from "./pages/JobRolePage"
 import AboutUsPage from "./pages/AboutUsPage"
-import FAQPage from "./pages/FAQPage"
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
+import CancellationPolicyPage from "./pages/CancellationPolicyPage"
+import RefundPolicyPage from "./pages/RefundPolicyPage"
 import TermsConditionsPage from "./pages/TermsConditionsPage"
 import ServicesPage from "./pages/ServicesPage"
 import EmailTestPanel from "./components/EmailTestPanel"
@@ -52,8 +53,9 @@ function App() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/careers/:roleId" element={<JobRolePage />} />
             <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/faq" element={<FAQPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/cancellation-policy" element={<CancellationPolicyPage />} />
+            <Route path="/refund-policy" element={<RefundPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
           </Routes>
         </main>

@@ -10,7 +10,7 @@ const ServicesPage: React.FC = () => {
     Articles: [
       {
         title: "Basic",
-        price: "$200",
+        price: "$500",
         features: [
           "1 Article",
           "3 (+1 complimentary) revisions",
@@ -21,7 +21,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$500",
+        price: "$1200",
         features: [
           "3 Articles",
           "3 (+1 complimentary) revisions per article",
@@ -33,7 +33,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$750",
+        price: "$1850",
         features: [
           "5 Articles",
           "3 (+1 complimentary) revisions per article",
@@ -47,7 +47,7 @@ const ServicesPage: React.FC = () => {
     Theses: [
       {
         title: "Basic",
-        price: "$300",
+        price: "$450",
         features: [
           "1 Thesis",
           "Basic formatting",
@@ -59,7 +59,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$500",
+        price: "$750",
         features: [
           "1 Thesis",
           "Masterchart",
@@ -72,7 +72,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$600",
+        price: "$900",
         features: [
           "1 Thesis",
           "Proposal",
@@ -89,7 +89,7 @@ const ServicesPage: React.FC = () => {
     PPT: [
       {
         title: "Basic",
-        price: "$120",
+        price: "$90",
         features: [
           "1 PPT",
           "20-25 slides",
@@ -100,7 +100,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Standard",
-        price: "$330",
+        price: "$250",
         features: [
           "3 PPT",
           "20-25 slides",
@@ -112,7 +112,7 @@ const ServicesPage: React.FC = () => {
       },
       {
         title: "Premium",
-        price: "$450",
+        price: "$330",
         features: [
           "5 PPT",
           "30+ slides",
@@ -203,7 +203,9 @@ const ServicesPage: React.FC = () => {
                     <div className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent">
                       {plan.price}
                     </div>
-                    <p className="text-sm text-gray-500 mt-2">(excluding taxes)</p>
+                    <p className="text-sm text-gray-500 mt-2">
+                      {activeTab === "Articles" ? "(excluding taxes and journal APC)" : "(excluding taxes)"}
+                    </p>
                   </div>
 
                   <div className="space-y-4 flex-1">

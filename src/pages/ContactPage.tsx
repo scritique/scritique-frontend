@@ -20,8 +20,31 @@ const ContactPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
+  const validateForm = () => {
+    if (!formData.name.trim()) return "Please enter your name."
+    if (!formData.email.trim()) return "Please enter your email address."
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) return "Please enter a valid email address."
+
+    if (!formData.phone.trim()) return "Please enter your phone number."
+    // Basic phone validation (allowing +, numbers, spaces, and hyphens, min 7 chars)
+    const phoneRegex = /^[+]?[\d\s-]{7,}$/
+    if (!phoneRegex.test(formData.phone)) return "Please enter a valid phone number."
+
+    if (!formData.message.trim()) return "Please enter a message."
+
+    return null // Return null if no errors
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    const validationError = validateForm()
+    if (validationError) {
+      setSubmitMessage({ type: 'error', text: validationError })
+      return
+    }
 
     setIsSubmitting(true)
     setSubmitMessage(null)

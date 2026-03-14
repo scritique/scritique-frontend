@@ -133,8 +133,13 @@ const Footer: React.FC = () => {
                 </a>
 
                 {/* LinkedIn */}
-                <div className="text-center">
-                  <div className="bg-white rounded p-2 mb-2 w-10 h-10 flex items-center justify-center mx-auto">
+                <a
+                  href="https://www.linkedin.com/company/scritique/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center hover:scale-105 transition-transform duration-200"
+                >
+                  <div className="bg-white rounded p-2 mb-2 w-10 h-10 flex items-center justify-center mx-auto hover:bg-gray-100 transition-colors duration-200">
                     <svg
                       className="w-5 h-5 text-gray-900"
                       fill="currentColor"
@@ -146,7 +151,7 @@ const Footer: React.FC = () => {
                   <div className="text-white text-xs">
                     <div>LINKEDIN</div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -162,9 +167,6 @@ const Footer: React.FC = () => {
             <div className="flex space-x-6 text-sm text-gray-400 md:justify-end">
               <Link to="/terms-and-conditions" className="hover:text-purple-400 transition-colors">
                 Terms & Conditions
-              </Link>
-              <Link to="/privacy-policy" className="hover:text-purple-400 transition-colors">
-                Privacy Policy
               </Link>
             </div>
           </div>
