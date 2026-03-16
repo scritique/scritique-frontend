@@ -165,9 +165,7 @@ const Footer: React.FC = () => {
               © {currentYear} Scritique. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400 md:justify-end">
-              <Link to="/terms-and-conditions" className="hover:text-purple-400 transition-colors">
-                Terms & Conditions
-              </Link>
+              {/* Additional footer links can be added here in the future */}
             </div>
           </div>
         </div>

@@ -19,8 +19,8 @@ const Navbar: React.FC = () => {
 
   const policyLinks = [
     { name: "Privacy Policy", href: "/privacy-policy" },
-    { name: "Cancellation Policy", href: "/cancellation-policy" },
-    { name: "Refund Policy", href: "/refund-policy" }
+    { name: "Refund & Cancellation Policy", href: "/refund-and-cancellation-policy" },
+    { name: "Terms & Conditions", href: "/terms-and-conditions" }
   ]
 
   // Close dropdown on outside click
