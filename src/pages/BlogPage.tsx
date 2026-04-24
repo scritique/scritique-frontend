@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CalendarIcon, UserIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
@@ -17,68 +17,21 @@ const BlogPage: React.FC = () => {
     }
   };
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'How to Write an Effective Research Paper',
-      excerpt: 'Learn the essential steps and techniques to write a compelling research paper that will impress your professors and peers.',
-      author: 'Dr. Sarah Johnson',
-      date: '2024-01-15',
-      category: 'Academic Writing',
-      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      readTime: '8 min read'
-    },
-    {
-      id: 2,
-      title: 'Mastering PowerPoint Presentations: A Complete Guide',
-      excerpt: 'Discover the secrets to creating engaging and professional PowerPoint presentations that will captivate your audience.',
-      author: 'Prof. Michael Chen',
-      date: '2024-01-10',
-      category: 'Thesis & Dissertation',
-      readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    },
-    {
-      id: 3,
-      title: 'The Art of Thesis Writing: From Proposal to Defense',
-      excerpt: 'A comprehensive guide to writing your thesis, from the initial proposal to the final defense presentation.',
-      author: 'Dr. Emily Rodriguez',
-      date: '2024-01-05',
-      category: 'Thesis & Dissertation',
-      readTime: '12 min read',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    },
-    {
-      id: 4,
-      title: 'Academic Writing Tips for International Students',
-      excerpt: 'Essential writing strategies and tips specifically designed for international students studying in English-speaking countries.',
-      author: 'Prof. David Thompson',
-      date: '2023-12-28',
-      category: 'Academic Writing',
-      readTime: '10 min read',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    },
-    {
-      id: 5,
-      title: 'Citation Styles: APA, MLA, and Chicago Explained',
-      excerpt: 'A detailed comparison of the most common citation styles used in academic writing, with examples and best practices.',
-      author: 'Dr. Lisa Wang',
-      date: '2023-12-20',
-      category: 'Academic Writing',
-      readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    },
-    {
-      id: 6,
-      title: 'How to Choose the Right Research Methodology',
-      excerpt: 'Guidance on selecting the most appropriate research methodology for your academic project or thesis.',
-      author: 'Prof. Robert Kim',
-      date: '2023-12-15',
-      category: 'Research Methods',
-      readTime: '9 min read',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    }
-  ];
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/blogs`)
+      .then(res => res.json())
+      .then(data => {
+        setBlogPosts(data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to fetch blogs", err);
+        setIsLoading(false);
+      });
+  }, []);
 
   const categories = ['All', 'Academic Writing', 'Thesis & Dissertation', 'Research Methods', 'Academic Presentations'];
 
@@ -133,7 +86,12 @@ const BlogPage: React.FC = () => {
 
           {/* Blog Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.slice(0, visibleCount).map((post, index) => (
+            {isLoading ? (
+              <div className="col-span-full py-12 text-center text-gray-500">Loading articles...</div>
+            ) : filteredPosts.length === 0 ? (
+              <div className="col-span-full py-12 text-center text-gray-500">No articles available in this category.</div>
+            ) : (
+              filteredPosts.slice(0, visibleCount).map((post, index) => (
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -179,7 +137,7 @@ const BlogPage: React.FC = () => {
                   </div>
                 </div>
               </motion.article>
-            ))}
+            )))}
           </div>
 
           {/* Load More Button */}

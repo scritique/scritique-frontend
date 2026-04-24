@@ -11,6 +11,7 @@ import CareersPage from "./pages/CareersPage"
 import JobRolePage from "./pages/JobRolePage"
 import AboutUsPage from "./pages/AboutUsPage"
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
+import AdminBlogPage from "./pages/AdminBlogPage"
 import RefundCancellationPolicyPage from "./pages/RefundCancellationPolicyPage"
 import TermsConditionsPage from "./pages/TermsConditionsPage"
 import ServicesPage from "./pages/ServicesPage"
@@ -50,6 +51,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
+            <Route path="/admin-manage-blogs" element={<AdminBlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/careers/:roleId" element={<JobRolePage />} />
