@@ -14,6 +14,7 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
 import RefundCancellationPolicyPage from "./pages/RefundCancellationPolicyPage"
 import TermsConditionsPage from "./pages/TermsConditionsPage"
 import ServicesPage from "./pages/ServicesPage"
+import BlogPostPage from "./pages/BlogPostPage"
 import EmailTestPanel from "./components/EmailTestPanel"
 import ScrollToTop from "./components/ScrollToTop"
 
@@ -48,6 +49,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/careers/:roleId" element={<JobRolePage />} />

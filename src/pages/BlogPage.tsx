@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CalendarIcon, UserIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 const BlogPage: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setEmail('');
+    }
+  };
+
   const blogPosts = [
     {
       id: 1,
@@ -20,7 +34,7 @@ const BlogPage: React.FC = () => {
       excerpt: 'Discover the secrets to creating engaging and professional PowerPoint presentations that will captivate your audience.',
       author: 'Prof. Michael Chen',
       date: '2024-01-10',
-      category: 'Presentations',
+      category: 'Thesis & Dissertation',
       readTime: '6 min read',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
     },
@@ -30,7 +44,7 @@ const BlogPage: React.FC = () => {
       excerpt: 'A comprehensive guide to writing your thesis, from the initial proposal to the final defense presentation.',
       author: 'Dr. Emily Rodriguez',
       date: '2024-01-05',
-      category: 'Thesis Writing',
+      category: 'Thesis & Dissertation',
       readTime: '12 min read',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
     },
@@ -66,7 +80,11 @@ const BlogPage: React.FC = () => {
     }
   ];
 
-  const categories = ['All', 'Academic Writing', 'Presentations', 'Thesis Writing', 'Research Methods'];
+  const categories = ['All', 'Academic Writing', 'Thesis & Dissertation', 'Research Methods', 'Academic Presentations'];
+
+  const filteredPosts = blogPosts.filter(post =>
+    activeCategory === 'All' || post.category === activeCategory
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -78,17 +96,17 @@ const BlogPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-4xl md:text-5xl font-bold mb-6 font-serif"
             >
-              Academic Writing Blog
+              The Scritique Blog
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-purple-100 max-w-3xl mx-auto"
+              className="text-xl text-purple-100 max-w-3xl mx-auto font-serif"
             >
-              Expert insights, tips, and guides to help you excel in your academic writing journey
+              Explore expert blogs on academic writing, research, and scholarly success
             </motion.p>
           </div>
         </div>
@@ -102,7 +120,11 @@ const BlogPage: React.FC = () => {
             {categories.map((category) => (
               <button
                 key={category}
-                className="px-6 py-2 rounded-full bg-white border border-gray-200 hover:border-purple-500 hover:text-purple-600 transition-colors duration-200"
+                onClick={() => { setActiveCategory(category); setVisibleCount(3); }}
+                className={`px-6 py-2 rounded-full border transition-colors duration-200 ${activeCategory === category
+                  ? 'bg-purple-600 text-white border-purple-600'
+                  : 'bg-white text-gray-700 border-gray-200 hover:border-purple-500 hover:text-purple-600'
+                  }`}
               >
                 {category}
               </button>
@@ -111,7 +133,7 @@ const BlogPage: React.FC = () => {
 
           {/* Blog Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {filteredPosts.slice(0, visibleCount).map((post, index) => (
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -150,10 +172,10 @@ const BlogPage: React.FC = () => {
                       <CalendarIcon className="h-4 w-4 ml-3 mr-1" />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
                     </div>
-                    <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center">
+                    <Link to={`/blog/${post.id}`} className="text-purple-600 hover:text-purple-700 font-medium flex items-center">
                       Read More
                       <ArrowRightIcon className="h-4 w-4 ml-1" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.article>
@@ -161,11 +183,16 @@ const BlogPage: React.FC = () => {
           </div>
 
           {/* Load More Button */}
-          <div className="text-center mt-12">
-            <button className="btn-primary">
-              Load More Articles
-            </button>
-          </div>
+          {visibleCount < filteredPosts.length && (
+            <div className="text-center mt-12">
+              <button
+                className="btn-primary"
+                onClick={() => setVisibleCount(prev => prev + 3)}
+              >
+                Load More Articles
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -178,16 +205,36 @@ const BlogPage: React.FC = () => {
           <p className="text-xl text-purple-100 mb-8">
             Get the latest academic writing tips and insights delivered to your inbox
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:border-transparent"
-            />
-            <button className="bg-white text-purple-600 hover:bg-purple-50 font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
-              Subscribe
-            </button>
-          </div>
+          {isSubscribed ? (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto"
+            >
+              <p className="text-xl font-semibold text-white">
+                🎉 Successfully subscribed!
+              </p>
+              <p className="text-purple-100 mt-2">
+                Thank you for joining our newsletter.
+              </p>
+            </motion.div>
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:border-transparent outline-none"
+              />
+              <button 
+                onClick={handleSubscribe}
+                className="bg-white text-purple-600 hover:bg-purple-50 font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+              >
+                Subscribe
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>
