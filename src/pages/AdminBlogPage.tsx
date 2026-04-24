@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { TrashIcon, PencilSquareIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const AdminBlogPage: React.FC = () => {
@@ -21,7 +21,7 @@ const AdminBlogPage: React.FC = () => {
 
   const apiUrl = `${process.env.REACT_APP_API_URL}/blogs`;
 
-  const fetchBlogs = () => {
+  const fetchBlogs = useCallback(() => {
     setIsLoading(true);
     fetch(apiUrl)
       .then(res => res.json())
@@ -33,11 +33,11 @@ const AdminBlogPage: React.FC = () => {
         console.error("Failed to fetch blogs", err);
         setIsLoading(false);
       });
-  };
+  }, [apiUrl]);
 
   useEffect(() => {
     fetchBlogs();
-  }, []);
+  }, [fetchBlogs]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
