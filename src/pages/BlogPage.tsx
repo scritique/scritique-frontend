@@ -123,18 +123,24 @@ const BlogPage: React.FC = () => {
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-gray-500">
-                      <UserIcon className="h-4 w-4 mr-1" />
-                      <span>{post.author}</span>
-                      <CalendarIcon className="h-4 w-4 ml-3 mr-1" />
+                  <div className="flex items-center text-xs text-gray-500 mb-5 pb-4 border-b border-gray-100">
+                    <div className="flex items-center mr-4">
+                      <UserIcon className="h-4 w-4 mr-1.5 text-gray-400" />
+                      <span className="font-medium">{post.author}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CalendarIcon className="h-4 w-4 mr-1.5 text-gray-400" />
                       <span>{new Date(post.date).toLocaleDateString()}</span>
                     </div>
-                    <Link to={`/blog/${post.id}`} className="text-purple-600 hover:text-purple-700 font-medium flex items-center">
-                      Read More
-                      <ArrowRightIcon className="h-4 w-4 ml-1" />
-                    </Link>
                   </div>
+
+                  <Link 
+                    to={`/blog/${post.id}`} 
+                    className="inline-flex items-center text-sm font-semibold text-purple-600 hover:text-purple-800 transition-colors group"
+                  >
+                    Read article
+                    <ArrowRightIcon className="h-4 w-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </motion.article>
             )))}
